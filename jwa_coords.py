@@ -5,13 +5,12 @@ from config import bot_channel, token
 
 bot = commands.Bot(command_prefix='.')
 
-@bot.command()
-async def coords(*, message:str):
+@bot.command(pass_context=True)
+async def coords(ctx, *, message:str):
     jwa_geo = Nominatim()
     coord = jwa_geo.geocode(str(message))
     if ctx.message.channel.id == str(bot_channel):
         try:
-            await bot.say('Your')
             await bot.say(str(coord.latitude) + ', ' + str(coord.longitude))
         except:
             tb = traceback.print_exc(file=sys.stdout)
