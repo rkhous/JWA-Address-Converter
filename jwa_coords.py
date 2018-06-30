@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 from geopy.geocoders import Nominatim
 from config import bot_channel, token
+import sys
+import traceback
 
 bot = commands.Bot(command_prefix='.')
 
